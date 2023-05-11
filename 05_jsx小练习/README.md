@@ -25,3 +25,7 @@
     ReactDOM.render(VDOM, document.getElementById('test'))
 </script>
 ```
+- 对数组进行加工操作,可以使用map方法
+- 读取表达式的时候,使用{} 来进行读取操作
+
+
