@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script type="text/javascript">
+      function demo() {
+        console.log(this);
+      }
+      demo();
+
+      // bind函数返回的是一个新函数,要想验证需接收
+      const x = demo.bind({ a: 1 });
+      x() // 改完this
+    </script>
+  </body>
+</html>
