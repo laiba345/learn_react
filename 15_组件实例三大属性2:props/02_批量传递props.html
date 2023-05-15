@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>事件绑定</title>
+    </style>
+</head>
+
+<body>
+    <!-- 准备好一个“容器” -->
+    <div id="test"></div>
+    <div id="test1"></div>
+    <div id="test"></div>
+
+    <!-- 引入react核心库 -->
+    <script type="text/javascript" src="../js/react.development.js"></script>
+
+    <!-- 引入react-dom，用于支持react操作DOM -->
+    <script type="text/javascript" src="../js/react-dom.development.js"></script>
+
+    <!-- 引入babel，用于将jsx转为js -->
+    <script type="text/javascript" src="../js/babel.min.js"></script>
+
+    <!-- 此处一定是babel -->
+    <script type="text/babel">
+        // 创建组件
+        class Person extends React.Component {
+            render() {
+                console.log(this)
+                // 如果觉得复杂,直接进行相关的解构赋值
+                const { name, sex, age } = this.props
+                // 多级结构,外面最好包一层小括号
+                return (
+                    <ul>
+                        <li>姓名:{name}</li>
+                        <li>性别:{sex}</li>
+                        <li>年龄:{age+1}</li>
+                    </ul>
+                )
+            }
+        }
+        // 渲染组件到页面
+        ReactDOM.render(<Person name="tom" age={ 18 } sex="女" />, document.getElementById('test'))
+
+        const p = { name: '老刘', age: 18, sex: '女' }
+        console.log(...p) // 有了babel和development.js 就不会报错 但是不会打印,因为其仅仅适合标签属性的传递
+        ReactDOM.render(<Person {...p} />, document.getElementById('test1'))
+    </script>
+</body>
+
+</html>
