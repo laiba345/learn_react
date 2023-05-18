@@ -12,8 +12,6 @@
 <body>
     <!-- 准备好一个“容器” -->
     <div id="test"></div>
-    <div id="test1"></div>
-    <div id="test"></div>
 
     <!-- 引入react核心库 -->
     <script type="text/javascript" src="../js/react.development.js"></script>
@@ -31,48 +29,48 @@
     <script type="text/babel">
         // 创建组件
         class Person extends React.Component {
+            /* 
+                通常在react中,构造函数仅仅适用于以下两种情况
+                1、通过给this.state赋值对象来初始化内部state
+                2、为事件处理函数绑定实例
+            */
+            // 总结;构造器是否接收props,是否传递给super,取决于:是否希望在构造器中通过this访问props
+            constructor(props) {
+                console.log(props)
+                super(props)
+                console.log('constructor', this.props) // 如果上面不接不传的话,此处通过this.props获取到的就是undefined
+            }
+            // 对标签属性进行类型、必要性的限制
+            // static关键字保证给类上加东西
+            static propTypes = {
+                name: PropTypes.string.isRequired, // 限制name必传,且为字符串
+                sex: PropTypes.string, // 限制sex为字符串
+                age: PropTypes.number, // 限制age为数值
+            }
+            // 指定默人的标签属性值
+            static defaultProps = {
+                sex: '男', // sex默认值为男 
+                age: 18 // age默认值为18
+            }
             render() {
                 console.log(this)
                 // 如果觉得复杂,直接进行相关的解构赋值
                 const { name, sex, age } = this.props
                 // props是只读的
-                this.props.name = 'jack' // 此行代码会报错,因为props是只读的
+                // this.props.name = 'jack' // 此行代码会报错,因为props是只读的
                 // 多级结构,外面最好包一层小括号
                 return (
                     <ul>
                         <li>姓名:{name}</li>
                         <li>性别:{sex}</li>
-                        <li>年龄:{age+1}</li>
+                        <li>年龄:{age + 1}</li>
                     </ul>
                 )
             }
         }
-        // 伪代码
-        /* Person.属性规则 = {
-            name:'必传,', 
-        } */
-        // 对标签属性进行类型、必要性的限制
-        Person.propTypes = {
-            name: PropTypes.string.isRequired, // 限制name必传,且为字符串
-            sex: PropTypes.string, // 限制sex为字符串
-            age: PropTypes.number, // 限制age为数值
-            speak: PropTypes.func // 限制speak为函数
-        }
-        // 指定默人的标签属性值
-        Person.defaultProps = {
-            sex: '男', // sex默认值为男 
-            age: 18 // age默认值为18
-        }
+
         // 渲染组件到页面
-        ReactDOM.render(<Person name="tom" speak={ speak } age={ 18 } sex="女" />, document.getElementById('test'))
-
-        const p = { name: '老刘', age: 18, sex: '女' }
-        console.log(...p) // 有了babel和development.js 就不会报错 但是不会打印,因为其仅仅适合标签属性的传递
-        ReactDOM.render(<Person {...p} />, document.getElementById('test1'))
-
-        function speak() {
-            console.log('我说话了')
-        }
+        ReactDOM.render(<Person name="jerry"/>, document.getElementById('test'))
     </script>
 </body>
 
