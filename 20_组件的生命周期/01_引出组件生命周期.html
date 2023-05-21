@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>引出生命周期</title>
+</head>
+
+<body>
+    <!-- 准备好一个“容器” -->
+    <div id="test"></div>
+
+    <!-- 引入react核心库 -->
+    <script type="text/javascript" src="../js/react.development.js"></script>
+
+    <!-- 引入react-dom，用于支持react操作DOM -->
+    <script type="text/javascript" src="../js/react-dom.development.js"></script>
+
+    <!-- 引入babel，用于将jsx转为js -->
+    <script type="text/javascript" src="../js/babel.min.js"></script>
+
+    <!-- 此处一定是babel -->
+    <script type="text/babel">
+        /* 
+            需要实现的效果
+            1、让指定的文本做显示/隐藏的渐变动画
+            2、从完全可见,到彻底消失,耗时2s
+            3、点击“不活了”, 按钮从界面中卸载组件
+        */
+        // 创建组件
+        class Life extends React.Component {
+            state = {
+                opacity: 1
+            }
+            death = () => {
+                // // 清除定时器
+                // clearInterval(this.timer)
+                // 卸载组件
+                ReactDOM.unmountComponentAtNode(document.getElementById('test'))
+            }
+            // 组件挂载完毕
+            componentDidMount() {
+                this.timer = setInterval(() => {
+                    // 获取原状态;
+                    let { opacity } = this.state
+                    // 减小0.1
+                    opacity -= 0.1
+                    // js中操作小数一定要注意;
+                    if (opacity <= 0) opacity = 1
+                    // 设置透明度
+                    this.setState({ opacity })
+                }, 200);
+            }
+            // 组件将要卸载
+            componentWillUnmount() {
+                // 清除定时器
+                clearInterval(this.timer)
+            }
+            /* 
+                render调用时机
+                1、初始化渲染
+                2、状态更新之后
+            */
+            render() {
+                return (
+                    <div>
+                        <h2 style={{ opacity: this.state.opacity }}>React学不会怎么办?</h2>
+                        <button onClick={this.death}>不活了</button>
+                    </div>
+                )
+            }
+        }
+        // 渲染组件
+        ReactDOM.render(<Life />, document.getElementById('test'))
+    </script>
+</body>
+
+</html>
