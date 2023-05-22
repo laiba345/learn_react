@@ -32,6 +32,27 @@
 2. 生命周期流程图(旧)
 ![项目主界面](../picture/生命周期(旧).png)
 
+3. 总结生命周期
+- 初始化阶段:由ReactDOM.render()触发 --- 初次渲染
+    - 1、constructor()
+    - 2、componentWillMount()
+    - 3、render()
+    - 4、componentDidMount()
+        - 常用;
+        - 一般在这个钩子中做一些初始化的事情;
+        - 例如:开启定时器、发送网络请求、订阅消息
+- 更新阶段:由组件内部this.setState()或父组件render触发
+    - 1、shouldComponentUpdate(); 强制更新就是少了这个环节
+    - 2、componentWillUpdate()
+    - 3、render()
+        - 必须使用一个
+    - 4、componentDidUpdate
+- 卸载组件:由ReactDOM.unmountComponentAtNode()触发
+    - 1、componentWillUnmount()
+        - 常用
+        - 一般在这个钩子中做一些收尾的事,例如:关闭定时器、取消订阅消息
+
+
 
 
 
