@@ -32,6 +32,17 @@
 2. 生命周期流程图(旧)
 ![项目主界面](../picture/生命周期(旧).png)
 
+3. 组件生命周期(旧)
+- 挂载时
+    - constructor => componentWillMount => render => componentDidMount => componentWillUnmount
+- 更新时(3条路线)
+    - 简单
+        - setState() => shouldComponentUpdate => componentWillUpdate => render => componentDidUpdate => componentWillUnmount
+    - 中等
+        - forceUpdate() => componentWillUpdate => render => componentDidUpdate => componentWillUnmount
+    - 复杂(父组件render)
+        - componentWillReceiveProps => shouldComponentUpdate => componentWillUpdate => render => componentDidUpdate => componentWillUnmount
+
 
 
 
