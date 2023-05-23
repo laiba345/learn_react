@@ -63,16 +63,23 @@
         this.forceUpdate()
       }
 
-      //若state的值在任何时候都取决于props，那么可以使用getDerivedStateFromProps
+      //若state的值在任何时候都取决于props，那么可以使用getDerivedStateFromProps(没啥意义)
+      // 为什么更新等其他东西都会受到影响呢？getDerivedStateFromProps是横跨整个初始化和更新过程
       static getDerivedStateFromProps(props, state) {
-        console.log('getDerivedStateFromProps', props, state);
+        // console.log('getDerivedStateFromProps', props, state);
+        // 给我返回一个状态对象或者null
         return null
+        // return { count: 109 } 
+        // return props
       }
 
       //在更新之前获取快照
       getSnapshotBeforeUpdate() {
+        // getSnapshotBeforeUpdate() 在最近一次渲染输出(提交到DOM节点)之前调用。
+        // 它使得组件能在发生更改之前从DOM中获取一些信息(如：滚动位置)
+        // 此生命周期的任何返回值将作为参数传递给componentDidUpdate(观察其下游是什么)
         console.log('getSnapshotBeforeUpdate');
-        return 'atguigu'
+        return 'atguigu' // 必须返回，任何值都可以作为快照值；有啥想做的，就可以放在这个钩子中进行操作
       }
 
       //组件挂载完毕的钩子
@@ -93,6 +100,7 @@
 
       //组件更新完毕的钩子
       componentDidUpdate(preProps, preState, snapshotValue) {
+        // 可以收到先前的props和state的状态
         console.log('Count---componentDidUpdate', preProps, preState, snapshotValue);
       }
 
