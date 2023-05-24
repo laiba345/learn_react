@@ -57,6 +57,37 @@
 - 一句话总结新的生命周期流程图；
     - 即：删除了3个旧的生命周期，新增了2个新的生命周期
     
+5. 总结新的生命周期
+    1. 初始化阶段: 由ReactDOM.render()触发---初次渲染
+            1.	constructor()
+            2.	getDerivedStateFromProps 
+            3.	render()
+            4.	componentDidMount() =====> 常用
+                    一般在这个钩子中做一些初始化的事，例如：开启定时器、发送网络请求、订阅消息
+    2. 更新阶段: 由组件内部this.setSate()或父组件重新render触发
+            1.	getDerivedStateFromProps
+            2.	shouldComponentUpdate()
+            3.	render()
+            4.	getSnapshotBeforeUpdate
+            5.	componentDidUpdate()
+    3. 卸载组件: 由ReactDOM.unmountComponentAtNode()触发
+            1.	componentWillUnmount()  =====> 常用
+                    一般在这个钩子中做一些收尾的事，例如：关闭定时器、取消订阅消息
+    4. 对比旧的生命周期钩子，其实最重要的`三个生命周期钩子`是没有改变的；
+        - render
+        - componentDidMount
+        - componentWillUnmount
+    重要的钩子
+        - render; 初始渲染或更新渲染调用
+        - componentDidMount; 开启监听，发送ajax请求
+        - componentWillUnmount; 做一些收尾工作，如清理定时器
+    即将废弃的钩子;现在使用会出现警告，下一个大版本需要加上UNSAFE_前缀才能使用，以后可能会被彻底废弃，不建议使用
+        - componentWillMount
+        - componentWillReceiveProps
+        - componentWillUpdate
+
+
+
 
 
 

@@ -9,6 +9,7 @@
 			width: 200px;
 			height: 150px;
 			background-color: skyblue;
+			/* 不让溢出，以滚动条的形式来展示 */
 			overflow: auto;
 		}
 
@@ -30,27 +31,31 @@
 	<script type="text/javascript" src="../js/17.0.1/babel.min.js"></script>
 
 	<script type="text/babel">
-		// 
+		// 做一个新闻列表的展示；越新的肯定是在上方的
+		// list属性计算；两个属性：scrollTop:往上走多少位置；scrollHeight:内容区的大小有多大
 		class NewsList extends React.Component {
-
+			// 状态中的数据驱动着页面的显示
 			state = { newsArr: [] }
 
+			// 钩子；一挂载就...
 			componentDidMount() {
 				setInterval(() => {
 					//获取原状态
 					const { newsArr } = this.state
-					//模拟一条新闻
+					//模拟一条新闻;新闻从1开始
 					const news = '新闻' + (newsArr.length + 1)
-					//更新状态
+					//更新状态; 又用到了解构赋值的语法规则;前面是新生成的,后面是原先的
 					this.setState({ newsArr: [news, ...newsArr] })
 				}, 1000);
 			}
-
+			// 新的新闻还没有放到页面上呢
 			getSnapshotBeforeUpdate() {
+				// 新的新闻回来之前内容区的高度;scrollHeight；内容区高度
 				return this.refs.list.scrollHeight
 			}
 
 			componentDidUpdate(preProps, preState, height) {
+				// 持续的有新闻回来，应该是持续的往上面跑
 				this.refs.list.scrollTop += this.refs.list.scrollHeight - height
 			}
 
