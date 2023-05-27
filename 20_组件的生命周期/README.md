@@ -79,11 +79,11 @@
         - render
         - componentDidMount
         - componentWillUnmount
-    重要的钩子
+    5. 重要的钩子
         - render; 初始渲染或更新渲染调用
         - componentDidMount; 开启监听，发送ajax请求
         - componentWillUnmount; 做一些收尾工作，如清理定时器
-    即将废弃的钩子;现在使用会出现警告，下一个大版本需要加上UNSAFE_前缀才能使用，以后可能会被彻底废弃，不建议使用
+    6. 即将废弃的钩子;现在使用会出现警告，下一个大版本需要加上UNSAFE_前缀才能使用，以后可能会被彻底废弃，不建议使用
         - componentWillMount
         - componentWillReceiveProps
         - componentWillUpdate
