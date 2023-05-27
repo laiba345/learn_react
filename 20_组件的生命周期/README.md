@@ -62,7 +62,7 @@
             1.	constructor()
             2.	getDerivedStateFromProps 
             3.	render()
-            4.	componentDidMount() =====> 常用
+            4.	componentDidMount() =====> **常用；重要**
                     一般在这个钩子中做一些初始化的事，例如：开启定时器、发送网络请求、订阅消息
     2. 更新阶段: 由组件内部this.setSate()或父组件重新render触发
             1.	getDerivedStateFromProps
