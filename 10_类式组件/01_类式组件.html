@@ -29,7 +29,7 @@
             /* 
                 render是放在哪里的?
                     - 类(MyComponent)的原型对象上,供实例使用
-                render中的this是谁?
+                render中的this是谁?(组件实例对象)
                     - MyComponent的实例对象
                     - MyComponent的组件实例对象
             */
@@ -44,7 +44,7 @@
           执行:ReactDOM.render(<MyComponent/>,...) 之后,发生了什么?
           1、React解析组件标签,找到了MyComponent组件
           2、发现组件是类定义的,随后new出来该类的实例,并通过该实例调用到原型上
-          的render方法
+          的render方法(发现组件是类定义的,随后new出来该类的实例,)
           3、将render返回的虚拟DOM转为真实DOM,随后呈现在页面中
         */
     </script>
