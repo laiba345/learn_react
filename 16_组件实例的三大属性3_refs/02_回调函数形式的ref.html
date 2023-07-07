@@ -49,7 +49,7 @@
                         // 此处的c可以简单理解为currentNode;
                         <input ref={c => this.input1 = c} type="text" placeholder="点击按钮提示数据" />&nbsp;
                         <button ref="button100" onClick={this.showData}>点我提示左侧数据</button>&nbsp;
-                        <input ref={c => this.input2 = c} onBlur={ this.showData2 } type="text" placeholder="失去焦点提示数据" />
+                        <input ref={c => this.input2 = c} onBlur={this.showData2} type="text" placeholder="失去焦点提示数据" />
                     </div>
                 )
             }
