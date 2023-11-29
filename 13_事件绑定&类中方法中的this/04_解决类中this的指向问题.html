@@ -14,6 +14,7 @@
       demo();
 
       // bind函数返回的是一个新函数,要想验证需接收
+      // bind函数会返回一个新函数，
       const x = demo.bind({ a: 1 });
       x() // 改完this
     </script>

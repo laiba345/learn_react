@@ -1,13 +1,13 @@
 let arr1 = [1, 3, 5, 7, 9];
 let arr2 = [2, 4, 6, 8, 10];
 
-// 1、展开一个数组
+// 1、展开一个数组； 
 console.log(...arr1);
 
-// 2、连接数组
+// 2、连接数组；
 let arr3 = [...arr1, ...arr2];
 
-// 3、在函数中使用
+// 3、在函数中使用； 
 function sum(...numbers) {
   // 数组身上有一个reduce; 最终是有返回值的
   return numbers.reduce((preValue, currentValue) => {

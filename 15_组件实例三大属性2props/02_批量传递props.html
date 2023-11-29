@@ -45,10 +45,12 @@
         // 渲染组件到页面
         ReactDOM.render(<Person name="tom" age={ 18 } sex="女" />, document.getElementById('test'))
 
+        // 可以通过批量传递来进行相关操作； 
+        // 先把数据弄出来，然后通过展开运算符来进行相关操作；
         const p = { name: '老刘', age: 18, sex: '女' }
         // 可以使用 ... 展开运算符;
         // console.log(...p) // 有了babel和development.js 就不会报错 但是不会打印,因为其仅仅适合标签属性的传递
-        // 可以使用...运算符来进行
+        // 可以使用...运算符来进行；可以使用展开运算符来进行相关操作；
         ReactDOM.render(<Person {...p} />, document.getElementById('test1'))
     </script>
 </body>

@@ -33,7 +33,7 @@
         }
       }
       //   class Dog {}
-      // 创建一个Person的实例对象
+      // 创建一个Person的实例对象； 书写好了类以后创建实例对象；
       // const p1 = new Person("tom", 18);
       // const p2 = new Person("jerry", 19);
       // console.log(p1); // Person {} 前面的Person表示由Person缔造的,输出的确实是一个实例
@@ -42,7 +42,8 @@
       // p2.speak();
 
       // 创建一个Student类,继承于Person类
-      // 构造器不是必须要传的, 如果有一些别的属性,才继续添加
+      // 构造器不是必须要传的, 如果有一些别的属性,才继续添加；
+      // 使用extends关键字实现继承，父类定义好的属性通过super关键字来继承；
       class Student extends Person {
         constructor(name, age, grade) {
           // 用于实现继承的相关操作; 
@@ -75,7 +76,7 @@
         wheel = 4
         static demo = 100 // 通过static关键字可以直接加在类本身上
       }
-      const c1 = new Car('奔驰C63', 199)
+      const c1 = new Car('奔驰C63', 199) // wheel已经在实例的身上了
       const c2 = new Car('宝马', 299)
       console.log(c1)
       console.log(c2)
