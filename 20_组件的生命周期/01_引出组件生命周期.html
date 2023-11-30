@@ -31,7 +31,7 @@
         */
         // 创建组件
         class Life extends React.Component {
-            // 状态是响应式的,下方方法修改状态以后,
+            // 状态是响应式的,下方方法修改状态以后,  状态是放在state当中，以对象的形式保存
             state = {
                 opacity: 1
             }
@@ -41,7 +41,7 @@
                 // 卸载组件
                 ReactDOM.unmountComponentAtNode(document.getElementById('test'))
             }
-            // 组件挂载完毕
+            // 组件挂载完毕； 组件生命周期大多都是直接翻译过来的内容；
             componentDidMount() {
                 this.timer = setInterval(() => {
                     // 获取原状态;
@@ -54,7 +54,7 @@
                     this.setState({ opacity })
                 }, 200);
             }
-            // 组件将要卸载
+            // 组件将要卸载；
             componentWillUnmount() {
                 // 清除定时器
                 clearInterval(this.timer)

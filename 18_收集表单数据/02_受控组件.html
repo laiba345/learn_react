@@ -33,6 +33,7 @@
             }
             // 保存用户名到状态中
             saveUsername = (event) => {
+                // 在标签中，都能够得到event.target.value; 
                 this.setState({ username: event.target.value })
             }
             // 保存密码到状态中
