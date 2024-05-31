@@ -28,13 +28,13 @@
         class Weather extends React.Component{
             constructor(props) {
                 super(props)
-                // 组件的state状态可以放在构造器身上
+                // 组件的state状态可以放在构造器身上，组件的state状态放在
                 this.state = {
                     isHot: false, 
                 }
             }
             render() {
-                // 也可以使用解构赋值的操作先把数据拿出来
+                // 也可以使用解构赋值的操作先把数据拿出来；state中可以存相关内容，
                 const { isHot } = this.state
                 // console.log(this)
                 return <h1>今天天气很{ isHot ? '炎热' : '凉爽'}</h1>
