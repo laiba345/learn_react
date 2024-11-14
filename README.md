@@ -1,4 +1,21 @@
 # learn_react
+## 1. JSX规则
+- 返回单个根元素；甚至可以使用<> </>
+- 关闭所有标签
+- 驼峰式命名；例如className
+- 可以学习使用JSX转换器
+
+## 2. 函数式大括号
+- 在function函数组件中，可以通过return () ，并且可以在括号中编写相关的jsx格式的代码内容
+- 在return语句之前可以定义很多内容，比如说姓名，const name = '' 或者是别的一些属性
+```
+export default function TodoList() {
+  const name = 'Gregorio Y. Zara';
+  return (
+    <h1>{name}'s To Do List</h1>
+  );
+}
+```
 ## hooks学习
 - 状态管理
   - 函数组件通过React提供的Hooks函数，比如我们通常使用useState钩子来管理状态；
